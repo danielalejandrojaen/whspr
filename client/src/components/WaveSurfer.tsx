@@ -20,11 +20,11 @@ declare module 'wavesurfer.js' {
 
 
 const WaveSurferComponent = () => {
-    const [wave, setWave] = useState<WaveSurfer | null>(null);
+    const [wave, setWave] = useState<object[] | null>([]);
     const [display, setDisplay] = useState<boolean>(false); 
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     
-    const createSoundWaves = () => {
+    const createSoundWaves = (containeId: string) => {
         let regions: RegionsPlugin
         //if there is a wavesurfer already, destroy it
         if (wavesurfer) {

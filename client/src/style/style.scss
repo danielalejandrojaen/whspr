@@ -1,7 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
+$primary: #606060;
+$secondary: #3c3556;
+$light: #a6c5ff;
 
 body {
-    background-color: #000;
+    background-color: $secondary;
 }
 #waveform  {
     height: 100%;

@@ -3,9 +3,6 @@ import path from 'path'
 import express, { Request, Response } from 'express'
 import multer from 'multer'
 import routes from './routes'
-// const db = require('./db')
-// const express = require('express')
-// const session = require('express-session')
 import cors from 'cors'
 const clientPath = path.resolve(__dirname, '../client/dist')
 const storage = multer.memoryStorage();
