@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios, {AxiosResponse} from "axios";
 import { RecordPost } from "./RecordPost"
 import Post from "./Post";
+import WaveSurferComponent from "./WaveSurfer";
 
 
 const Feed = ({ audioContext }: { audioContext: BaseAudioContext }) => {
@@ -75,12 +76,17 @@ useEffect(() => {
         >Explore</button>
       </div>}
       {posts ? posts.map((post: any) => (
-        <Post
-          key = {post.id}
-          postObj = {post}
-          getFriendsPosts={getFriendsPosts}
-          audioContext={audioContext}
-        />
+        <div>
+          <Post
+            key = {post.id}
+            postObj = {post}
+            getFriendsPosts={getFriendsPosts}
+            audioContext={audioContext}
+          />
+          {/* each post should have its own instance of a waveSurfer comp */}
+          <WaveSurferComponent audioUrl={post.soundUrl} postId={post.id} />
+
+        </div>
       )) : <div>Loading...</div>}
     </div>
 
