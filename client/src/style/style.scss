@@ -89,3 +89,27 @@ body {
       background-color: #3c3556;
     }
     
+//USER PROFILE
+.user-main {
+  display: flex;
+  justify-content:center;
+  align-items: flex-start;
+  height: 100vh; 
+  padding-top: 50px;
+}
+.user-main-card {
+  position: relative;
+}
+
+.user-pfp {
+  width: 90px;
+  height: 95px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  background-color: #3c3556;
+  color: #a6c5ff;
+  top: -50px;
+  left: 80%;
+  transform: translateX(-20%)
+}
