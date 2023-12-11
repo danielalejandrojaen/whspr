@@ -83,7 +83,6 @@ app.get('/google/callback',  passport.authenticate('google', {
   // set cookies
   res.setHeader('Set-Cookie', setCookie);
   req.session.save()
-  console.log('req.session', req.session);
 
   res.redirect('/protected')
 })

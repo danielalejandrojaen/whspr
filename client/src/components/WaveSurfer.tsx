@@ -24,9 +24,9 @@ const WaveSurferComponent: React.FC<WaveSurferProps> = ({ audioUrl, postId}) => 
         //create the new wave
         console.log('creating new wave')
         const wavesurfer = WaveSurfer.create({
-            barWidth: 15,
-            barRadius: 5,
-            barGap: 2,
+            // barWidth: 15,
+            // barRadius: 5,
+            // barGap: 2,
             interact: true,
             container: `#${containerId}`,
             waveColor: 'rgb(0, 255, 0)',
@@ -57,7 +57,6 @@ const WaveSurferComponent: React.FC<WaveSurferProps> = ({ audioUrl, postId}) => 
         //         color: 'hsla(250, 100%, 30%, 0.5)',
         //     })
         // })
-        
         console.log('wave created!', wavesurfer)
         setWave(wavesurfer);
         setDisplay(true);
