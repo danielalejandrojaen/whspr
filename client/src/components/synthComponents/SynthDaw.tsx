@@ -30,7 +30,8 @@ const SynthDaw = ({audioContext, oscillator, mediaDest, userId}: Props): React.J
   useEffect(() => {
     setAddFilter(false);
     setAddSynth(false);
-  }, [])
+    console.log('filter in synthdaw use effect', filter)
+  }, [filter]);
 
   // conditional rendering of filters and synth
   const toggleFilter = () => addFilter === false ? setAddFilter(true) : setAddFilter(false);

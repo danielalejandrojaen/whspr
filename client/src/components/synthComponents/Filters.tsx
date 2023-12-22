@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Tuna from 'tunajs';
 import { Stack, Button, Container } from 'react-bootstrap';
+import { use } from 'passport';
 
 interface Props {
   audioContext: AudioContext
@@ -8,38 +9,17 @@ interface Props {
 }
 
 const Filters = ({ setFilter, audioContext }: Props) => {
-  const [bgColor1, setBgColor1] = useState<string>('')
-  const [bgColor2, setBgColor2] = useState<string>('')
-  const [bgColor3, setBgColor3] = useState<string>('')
-  const tuna = new Tuna(audioContext);
-
-  const handleFilterChange = (filter: any) => {
-    setFilter(filter);
-    filter === alien ? setBgColor1('danger') : setBgColor1('secondary');
-    if (filter === alien && bgColor1 === 'danger') {
-      setBgColor1('secondary');
-      setFilter(defaultSettings)
-    }
-    filter === wobbly ? setBgColor2('danger') : setBgColor2('secondary');
-    if (filter === wobbly && bgColor1 === 'danger') {
-      setBgColor1('secondary');
-      setFilter(defaultSettings)
-    }
-    filter === robot ? setBgColor3('danger') : setBgColor3('secondary');
-    if (filter === robot && bgColor1 === 'danger') {
-      setBgColor1('secondary');
-      setFilter(defaultSettings)
-    }
-    console.log('currentFilter', filter)
-  };
-
+  const [bgColor1, setBgColor1] = useState<string>('');
+  const [bgColor2, setBgColor2] = useState<string>('');
   const defaultSettings = {
     lowPassFrequency: 350,
     highPassFrequency: 350,
     highPassType: 'highpass',
     lowPassType: 'lowpass',
-  }
-
+  };
+  const [bgColor3, setBgColor3] = useState<string>('');
+  const tuna = new Tuna(audioContext);
+  
   const robot = {
     lowPassType: 'lowpass',
     lowPassFrequency: 60,
@@ -63,7 +43,7 @@ const Filters = ({ setFilter, audioContext }: Props) => {
     }),
     gain: new tuna.Gain({ gain: 90 }),
   };
-
+  
   const wobbly = {
     lowPassType: 'lowpass',
     lowPassFrequency: 150,
@@ -84,9 +64,9 @@ const Filters = ({ setFilter, audioContext }: Props) => {
       delayTimeLeft: 60,
       delayTimeRight: 100,
     }),
-    gain: new tuna.Gain({ gain: 250})
-  }
-
+    gain: new tuna.Gain({ gain: 250 }),
+  };
+  
   const alien = {
     lowPassType: 'lowpass',
     lowPassFrequency: 50,
@@ -111,10 +91,35 @@ const Filters = ({ setFilter, audioContext }: Props) => {
       baseModulationFrequency: 1000,
       bypass: false,
     }),
-  }
+  };
+
+  const handleFilterChange = (filter: any) => {
+    console.log('handleFilterchange filter', filter);
+    setFilter(filter);
+    filter === alien ? setBgColor1('danger') : setBgColor1('secondary');
+    if (filter === alien && bgColor1 === 'danger') {
+      setBgColor1('secondary');
+      setFilter(defaultSettings);
+    }
+    filter === wobbly ? setBgColor2('danger') : setBgColor2('secondary');
+    if (filter === wobbly && bgColor1 === 'danger') {
+      setBgColor1('secondary');
+      setFilter(defaultSettings);
+    }
+    filter === robot ? setBgColor3('danger') : setBgColor3('secondary');
+    if (filter === robot && bgColor1 === 'danger') {
+      setBgColor1('secondary');
+      setFilter(defaultSettings);
+    }
+    console.log('currentFilter', filter);
+  };
+
   // setting the filter for disabling buttons
   const [currentFilter, setCurrentFilter] = useState({});
-
+  useEffect(() => {
+    console.log('currentFilter', currentFilter);
+    console.log('filter', setFilter);
+  }, [setFilter]);
   return (
     <Container className="text-center my-3 pb-1 synthRecorder rounded">
     <h5>Try out our new voice filters!</h5>
