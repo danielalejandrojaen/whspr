@@ -133,30 +133,7 @@ const CategorySearch = ({ onCategorySelect }: { onCategorySelect: (category: str
     handleCategorySelection(currentSearch);
     setCustomHit('');
   };
-  // const Hit = ({ hit, onSelect }: { hit: any; onSelect: (category: string[] | string) => void }) => {
-  //   const { hits } = useHits();
-  //   // console.log('hits', hit); //the individual hit obj
-  //   // console.log('hits array + hit', hits, hit);
-  //   //  filter the hits based on the current search
-  //   const filteredHits = hits.filter((individualHit: any) => {
-  //     return individualHit.category.toLowerCase().includes(currentSearch.toLowerCase());
-  //   });
-  //   // console.log('search + indiv hits', currentSearch, filteredHits);
-  //   return (
-  //     // TODO: issue, when you click on a hit, it just adds the input value to the selected categories instead of the hit value
-  //     <article id='cat-hit' onClick={() => onSelect(filteredHits)}
-  //       style={{ border: '1px solid black', padding: '10px', margin: '10px' }}
-  //     >
-  //       {filteredHits.map(filteredHit => (
-  //         <div key={filteredHit.objectID}>
-  //           <p>{filteredHit.category}</p>
-  //         </div>
-  //       ))}
-
-  //       {/* {filteredHits[0]} */}
-  //     </article>
-  //   );
-  // };
+  
   useEffect(() => {
     getAllCategories();
   }, [selectedCategories, placeholderCategories, customHit]);
